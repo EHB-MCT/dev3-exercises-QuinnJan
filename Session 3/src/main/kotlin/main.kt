@@ -45,6 +45,7 @@ fun challengeOne() {
 }
 
 fun challengeTwo() {
+    println("challenge two.. did the dice roll a low number or a high number?")
     val diceResult = (1..6).random()
     val userChoice = readLine()
     val winMessage = "you won again!"
@@ -61,5 +62,20 @@ fun challengeTwo() {
 }
 
 fun challengeThree(){
-    
+    val weapons = setOf("gun","grenade","knife")
+    println("choose a weapon to rob a bank, theres only one correct choice!")
+    println(weapons)
+    val userChoice = readLine()
+
+    if (userChoice == "gun" && weapons.contains("gun")) {
+        println("that's the correct choice!")
+       // challengeFour()
+    }else if (userChoice == "grenade" && weapons.contains("grenade")){
+        println("wrong! back to challenge two!")
+        challengeTwo()
+    } else if (userChoice == "knife" && weapons.contains("knife")) {
+
+        gameOver()
+    }
+
 }
