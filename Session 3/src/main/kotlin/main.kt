@@ -31,9 +31,9 @@ fun textOne(){
 
 fun challengeOne() {
     textOne();
-    val options = listOf("a joke", "een mop", "une blague")
+    val options = setOf("a joke", "een mop", "une blague")
 
-    val userChoice = readLine()!!
+    val userChoice = readLine()
     val winMessage = "You.. live!"
 
     if (options.contains(userChoice)){
@@ -44,6 +44,22 @@ fun challengeOne() {
     }
 }
 
-fun challengeTwo(){
+fun challengeTwo() {
+    val diceResult = (1..6).random()
+    val userChoice = readLine()
+    val winMessage = "you won again!"
 
+    if (userChoice == "low" && (1..3).contains(diceResult)) {
+        println(winMessage)
+        challengeThree()
+    }else if (userChoice == "high" && (4..6).contains(diceResult)){
+        println(winMessage)
+        challengeThree()
+    } else {
+            gameOver()
+    }
+}
+
+fun challengeThree(){
+    
 }
