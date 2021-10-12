@@ -44,6 +44,16 @@ fun challengeOne() {
     }
 }
 
-fun challengeTwo(){
+fun challengeTwo() {
+    val numbers = listOf(1, 2, 3, 4, 5, 6)
+    val computerChoice = numbers.random()
+    val high = arrayOf(4, 5, 6)
+    val low = arrayOf(1, 2, 3)
+    val userChoice = readLine()!!
 
+    if (low.contains(computerChoice)) {
+        println("low")
+
+    }else
+        println("high")
 }
