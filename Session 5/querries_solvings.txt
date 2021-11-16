@@ -1,0 +1,49 @@
+FIRST BATCH
+
+SELECT productName FROM products WHERE productCode = "S24_3856"
+--> 1956 Porsche 356A Coupe
+
+SELECT AVG(buyPrice) FROM products
+--> 54.395182
+
+SELECT COUNT(productName) FROM products WHERE productName LIKE '%Ford%'
+--> 15
+
+SELECT MAX(buyPrice) FROM products
+--> 103.42
+
+SELECT COUNT(productLine) FROM products WHERE productLine LIKE '%ships%'
+--> 9
+
+SECOND BATCH
+
+SELECT COUNT(*) FROM orders WHERE customerNumber = "328"
+--> 3
+
+SELECT COUNT(*) from orders
+INNER JOIN customers ON customers.customerNumber = orders.customerNumber
+WHERE customers.contactFirstName = "Julie" AND customers.contactLastName = "Young"
+--> 3
+
+SELECT COUNT(*) FROM customers WHERE country LIKE "%USA%" AND creditLimit = "0.00"
+--> 1
+
+SELECT AVG(payments.amount), payments.customerNumber, customers.contactLastName, customers.contactFirstName FROM payments 
+RIGHT JOIN customers ON payments.customerNumber = customers.customerNumber 
+GROUP BY payments.customerNumber ORDER BY AVG(payments.amount) DESC
+LIMIT 1
+
+OF 
+
+(SELECT customers.customerName, AVG(amount) AS average FROM payments
+INNER JOIN customers ON customers.customerNumber = payments.customerNumber
+GROUP BY customers.customerNumber
+ORDER BY average DESC
+LIMIT 1)
+--> 80375.240000	239	Thompson	Valarie
+
+THIRD BATCH
+
+SELECT SUM(amount) FROM payments INNER JOIN customers ON customers.customerNumber = payments.customerNumber 
+WHERE customers.contactFirstName = "William" AND customers.contactLastName = "Brown"
+--> 38281.51
